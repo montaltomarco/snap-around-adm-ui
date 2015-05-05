@@ -9,7 +9,7 @@ export default React.createClass({
     return (
       <ul>
         {this.props.users.map((user) => {
-          return <UserRow user={user} />;
+          return <UserRow key={user.get("fbUserId")} user={user} />;
         })}
       </ul>
     );
