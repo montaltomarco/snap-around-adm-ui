@@ -5,7 +5,7 @@ import React from "react";
 import {checkUser, updateUserPath} from "../actions/UserActions.jsx";
 
 export default React.createClass({
-  checkboxChanged(e) {
+  handleCheckboxChange(e) {
     const fbUserId = this.props.user.get("fbUserId");
     const checked = e.target.checked;
     checkUser(fbUserId, checked);
@@ -21,7 +21,7 @@ export default React.createClass({
         <p>{this.props.user.get("name")}</p>
         <input type="checkbox"
                checked={this.props.user.get("checked")}
-               onChange={this.checkboxChanged} />
+               onChange={this.handleCheckboxChange} />
       </li>
     );
   }
