@@ -45,7 +45,7 @@ UserStore.dispatchToken = Dispatcher.register((payload) => {
     case UPDATE_USER_PATH:
       UserStore.swap(
         assocMatching,
-        matchAttrEquality("fbUserId", payload.fbUserId),
+        matchAttrEquality("fbUserId", payload.get("fbUserId")),
         "path",
         payload.get("path"));
       break;

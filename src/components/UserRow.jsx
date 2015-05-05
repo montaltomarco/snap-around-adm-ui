@@ -2,11 +2,16 @@
 
 import React from "react";
 
-import {checkUser} from "../actions/UserActions.jsx";
+import {checkUser, updateUserPath} from "../actions/UserActions.jsx";
 
 export default React.createClass({
   checkboxChanged(e) {
-    checkUser(this.props.user.get("fbUserId"), e.target.checked);
+    const fbUserId = this.props.user.get("fbUserId");
+    const checked = e.target.checked;
+    checkUser(fbUserId, checked);
+    if(checked) {
+      updateUserPath(fbUserId);
+    }
   },
   render() {
     return (

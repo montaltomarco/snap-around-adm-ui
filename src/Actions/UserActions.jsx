@@ -40,7 +40,7 @@ export function checkUser(fbUserId, checked = true) {
 
 export const UPDATE_USER_PATH = "user-update-user-path";
 export function updateUserPath(fbUserId) {
-  fetch(`${SERVER_BASE_URL}/track/${fbUserId}`,{
+  fetch(`${SERVER_BASE_URL}/track/${fbUserId}`, {
     headers: {
       authentication: `ADMPass ${LoginStore.deref().get("password")}`,
       accept: "application/json"
@@ -50,6 +50,7 @@ export function updateUserPath(fbUserId) {
   }).then((body) => {
     Dispatcher.dispatch(Immutable.Map({
       actionType: UPDATE_USER_PATH,
+      fbUserId: fbUserId,
       path: Immutable.fromJS(body)
     }));
   }).catch((err) => {
