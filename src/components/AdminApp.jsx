@@ -16,7 +16,7 @@ export default React.createClass({
     return retrieveFromStores();
   },
   componentDidMount() {
-    UserStore.addChangeListener(this._onChange);
+    UserStore.addChangeListener(this.onChange);
   },
   render() {
     return (
@@ -25,7 +25,7 @@ export default React.createClass({
       </div>
     );
   },
-  _onChange() {
+  onChange() {
     this.setState(retrieveFromStores());
   }
 });
