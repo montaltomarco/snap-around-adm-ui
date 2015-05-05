@@ -6,6 +6,7 @@ import UserList from "./UserList.jsx";
 import LoginBox from "./LoginBox.jsx";
 import UserStore from "../stores/UserStore.jsx";
 import LoginStore from "../stores/LoginStore.jsx";
+import {fetchUsers} from "../actions/UserActions.jsx";
 
 
 function retrieveFromStores() {
@@ -35,6 +36,11 @@ export default React.createClass({
     }
   },
   onChange() {
-    this.setState(retrieveFromStores());
+    const changes = retrieveFromStores();
+    this.setState(changes);
+    if(changes.login.get("password")
+    && changes.users.size < 1) {
+      fetchUsers();
+    }
   }
 });
