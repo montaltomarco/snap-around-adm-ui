@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import {updatePassword} from "../actions/LoginActions.jsx";
+import {updatePasswordAndFetch} from "../actions/LoginActions.jsx";
 
 export default React.createClass({
   getInitialState() {
@@ -12,7 +12,7 @@ export default React.createClass({
     this.setState({password: e.target.value});
   },
   handleLoginClick() {
-    updatePassword(this.state.password);
+    updatePasswordAndFetch(this.state.password);
   },
   render() {
     return (
