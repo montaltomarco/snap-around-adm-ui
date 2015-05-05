@@ -11,11 +11,3 @@ export function updatePassword(password) {
     password: password
   }));
 }
-
-export const UPDATE_PASSWORD_AND_FETCH = "login-update-password-and-fetch";
-export function updatePasswordAndFetch(password) {
-  Dispatcher.dispatch(Immutable.Map({
-    actionType: UPDATE_PASSWORD_AND_FETCH,
-    password: password
-  }));
-}
