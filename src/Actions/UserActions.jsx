@@ -28,3 +28,32 @@ export function fetchUsers() {
     updatePassword(null);
   });
 }
+
+export const CHECK_USER = "user-check-user";
+export function checkUser(fbUserId, checked = true) {
+  Dispatcher.dispatch(Immutable.Map({
+    actionType: CHECK_USER,
+    fbUserId: fbUserId,
+    checked: checked
+  }));
+}
+
+export const UPDATE_USER_PATH = "user-update-user-path";
+export function updateUserPath(fbUserId) {
+  fetch(`${SERVER_BASE_URL}/track/${fbUserId}`,{
+    headers: {
+      authentication: `ADMPass ${LoginStore.deref().get("password")}`,
+      accept: "application/json"
+    }
+  }).then((response) => {
+    return response.json();
+  }).then((body) => {
+    Dispatcher.dispatch(Immutable.Map({
+      actionType: UPDATE_USER_PATH,
+      path: Immutable.fromJS(body)
+    }));
+  }).catch((err) => {
+    console.error("Rejected request", err);
+    updatePassword(null);
+  });
+}

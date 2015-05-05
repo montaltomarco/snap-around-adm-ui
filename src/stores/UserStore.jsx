@@ -17,7 +17,7 @@ function replaceWith(list) {
 
 function matchAttrEquality(key, value) {
   return (user) => {
-    return (user[key] === value);
+    return (user.get(key) === value);
   };
 }
 
@@ -38,16 +38,16 @@ UserStore.dispatchToken = Dispatcher.register((payload) => {
     case CHECK_USER:
       UserStore.swap(
         assocMatching,
-        matchAttrEquality("fbUserId", payload.fbUserId),
+        matchAttrEquality("fbUserId", payload.get("fbUserId")),
         "checked",
-        payload.checked);
+        payload.get("checked"));
       break;
     case UPDATE_USER_PATH:
       UserStore.swap(
         assocMatching,
         matchAttrEquality("fbUserId", payload.fbUserId),
         "path",
-        payload.path);
+        payload.get("path"));
       break;
   }
 });
