@@ -36,7 +36,7 @@ export default React.createClass({
                       position: "absolute",
                       height: "100%",
                       width: "100%" }}>
-          <div style={{ flex: "4 1 auto",
+          <div style={{ flex: "10 1 auto",
                         height: "100%" }}>
             <PathVisualizer users={this.state.users}
                             width="100%"

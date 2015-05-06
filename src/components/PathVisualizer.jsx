@@ -14,7 +14,7 @@ export default React.createClass({
   },
   render() {
     return (
-      <Map initialZoom={11}
+      <Map initialZoom={12}
            initialCenter={new LatLng(45.771632, 4.845313)}
            width={this.props.width}
            height={this.props.height}
