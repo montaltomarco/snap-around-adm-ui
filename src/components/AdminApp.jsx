@@ -4,6 +4,7 @@ import React from "react";
 
 import UserList from "./UserList.jsx";
 import LoginBox from "./LoginBox.jsx";
+import PathVisualizer from "./PathVisualizer.jsx";
 import UserStore from "../stores/UserStore.jsx";
 import LoginStore from "../stores/LoginStore.jsx";
 import {fetchUsers} from "../actions/UserActions.jsx";
@@ -32,6 +33,7 @@ export default React.createClass({
     if(this.state.login.get("password")) {
       return (
         <div>
+          <PathVisualizer users={this.state.users}/>
           <UserList users={this.state.users} />
         </div>
       );
