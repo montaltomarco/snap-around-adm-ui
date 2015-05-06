@@ -32,9 +32,19 @@ export default React.createClass({
   render() {
     if(this.state.login.get("password")) {
       return (
-        <div>
-          <PathVisualizer users={this.state.users}/>
-          <UserList users={this.state.users} />
+        <div style={{ display: "flex",
+                      position: "absolute",
+                      height: "100%",
+                      width: "100%" }}>
+          <div style={{ flex: "4 1 auto",
+                        height: "100%" }}>
+            <PathVisualizer users={this.state.users}
+                            width="100%"
+                            height="100%"/>
+          </div>
+          <div style={{ flex: "1 1 auto" }}>
+            <UserList users={this.state.users} />
+          </div>
         </div>
       );
     } else {

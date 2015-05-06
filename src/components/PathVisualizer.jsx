@@ -6,12 +6,19 @@ import {Map, Polyline} from "react-googlemaps";
 let {LatLng} = window.google.maps;
 
 export default React.createClass({
+  componentDidMount() {
+    this.refs.rootNode.getDOMNode().style = `
+      width: ${this.props.width};
+      height: ${this.props.height};
+    `;
+  },
   render() {
     return (
-      <Map initialZoom={10}
+      <Map initialZoom={11}
            initialCenter={new LatLng(45.771632, 4.845313)}
-           width="100%"
-           height={300}>
+           width={this.props.width}
+           height={this.props.height}
+           ref="rootNode">
         {this.props.users.map((user) => {
           if(user.get("checked") && user.get("path")) {
             return <Polyline strokeColor="#000000"
